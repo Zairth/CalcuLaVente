@@ -1,0 +1,588 @@
+@font-face {
+    font-family: 'Playfair_Display';
+    src: url('/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('/assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lora';
+    src: url('/assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('/assets/fonts/Lora/Lora-VariableFont_wght.ttf') format('truetype');
+} 
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+  
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
+    background-color: #242833;
+    background-image: url("/assets/images/bg-img.png");
+    background-position: center;
+    background-size: cover;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    padding-inline: 15px;
+}
+  
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+}
+  
+.box {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: calc(150px + 20vw);
+} .box-marge-delete {
+    margin: 25px;
+}
+
+.box-input-responsive {
+    margin: 35px;
+}
+
+.box-2-5 {
+    display: none;
+}
+
+.box-3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section span {
+    font-size: 1.5rem;
+}
+
+.automotocategorydisplay {
+    display: none;
+    pointer-events: none;
+}
+
+.auto-and-moto-cat-visible {
+    display: block;
+    pointer-events: all;
+    animation: autoMotoCatVisible 1.5s 1 forwards;
+} @keyframes autoMotoCatVisible {
+    0% {
+        filter: opacity(0);
+    }
+    100% {
+        filter: opacity(1);
+    }
+}
+
+
+.box-ebay-category-remove {
+    animation: category-disabled 2.59s 1 forwards;
+    pointer-events: none;
+} @keyframes category-disabled {
+    0% {
+        filter: opacity(1);
+    }
+    30% {
+        filter: opacity(0);
+    }
+    100% {
+        position: absolute;
+        filter: opacity(0);
+    }
+}
+
+/* Transition checkBox sellOption */
+
+.box-deux-remove {
+    animation: box-deux-disabled 2.59s 1 forwards;
+    pointer-events: none;
+} @keyframes box-deux-disabled {
+    0% {
+        filter: opacity(1);
+    }
+    30% {
+        filter: opacity(0);
+    }
+    100% {
+        position: absolute;
+        filter: opacity(0);
+    }
+}
+
+.box-checkbox-appear {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+    animation: section-appear 1.5s 1 forwards;
+} .box-checkbox-appear div {
+    margin: 15px 0;
+}
+
+@keyframes section-appear {
+    0% {
+        filter: opacity(0);
+    }
+    100% {
+        filter: opacity(1);
+    }
+}
+
+.hr-disabled {
+    display: none;
+}
+
+.hr-add {
+    display: block;
+    animation: section-appear 1s 1 forwards;
+} 
+
+/* Block utile à la transition checkbox */
+
+#sellOption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sellOptionBlock-fb, .sellOptionBlock-cm {
+    margin-top: 20px;
+}
+
+/**********************************/
+
+/* Class ajouté via JS pour Transition du form & section */
+
+.form-transform-out {
+    position: fixed;
+    animation: form-move-out 1s 1 forwards;
+    padding-inline: 15px;
+} @keyframes form-move-out {
+    0% {
+        bottom: 0%;
+        filter: opacity(1);
+    }
+    100% {
+        bottom: 100%;
+        filter: opacity(0);
+    }
+}
+
+.form-transform-in {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+    animation: form-move-in 1s 1 forwards;
+} @keyframes form-move-in {
+    0% {
+        bottom: 100%;
+        filter: opacity(0);
+    }
+    100% {
+        bottom: 0%;
+        filter: opacity(1);
+    }
+}
+
+.section-visible {
+    position: fixed;
+    height: fit-content;
+    width: 60%;
+    animation: move-in 1s 1 forwards;
+} @keyframes move-in {
+    0% {
+        top: 150%;
+        transform: translateY(-100%);
+        filter: opacity(0);
+    }
+    100% {
+        top: 45%;
+        transform: translateY(-50%);
+        filter: opacity(1);
+    }
+}
+
+.section-disabled {
+    position: fixed;
+    height: fit-content;
+    width: 60%;
+    animation: move-out 1s 1 forwards;
+    pointer-events: none;
+} @keyframes move-out {
+    0% {
+        top: 45%;
+        transform: translateY(-50%);
+        filter: opacity(1);
+    }
+    100% {
+        top: 100%;
+        transform: translateY(100%);
+        filter: opacity(0);
+    }
+}
+
+.button-box {
+    display: none;
+}
+
+.button-box-appear {
+    position: relative;
+    height: fit-content;
+    text-align: center;
+    animation: moves-in 1s 1 forwards;
+} @keyframes moves-in {
+    0% {
+        top: 150%;
+        filter: opacity(0);
+        position: fixed;
+    }
+    90% {
+        position: fixed;
+    }
+    100% {
+        top: 90%;
+        filter: opacity(1);
+    }
+}
+
+.button-box-disappear {
+    position: fixed;
+    height: fit-content;
+    text-align: center;
+    animation: moves-out 1s 1 forwards;
+} @keyframes moves-out {
+    0% {
+        top: 90%;
+        filter: opacity(1);
+    }
+    100% {
+        top: 150%;
+        filter: opacity(0);
+    }
+}
+
+  /********************************/
+  
+.input-saisis {
+    position: relative;
+    width: 80%;
+    outline: none;
+    padding: 8px 2px;
+    font-size: 1.3rem;
+    font-family: 'Playfair_Display';
+    background: none;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    left: 0;
+    z-index: 2;
+}
+  
+label, p {
+    font-size: 1.15rem;
+    font-family: 'Playfair_Display';
+    color: white;
+    text-shadow: 0px 0px 21px rgba(255,255,255,0.7);
+    z-index: 2;
+}
+
+p {
+    text-align: center;
+}
+
+label:not(.sellOption) {
+    position: absolute;
+    left: 12%;
+    bottom: 12%;
+    text-transform: uppercase;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.sellOptionBlock {
+    text-align: center;
+}
+
+.bg-input {
+    position: absolute;
+    top: -33%;
+    left: 50%;
+    background-color: rgba(58,80,107, 0.25);
+    width: 90%;
+    height: 85px;
+    transform: skewX(-20deg) translateX(-50%);
+    border-inline: 3px solid transparent;
+    pointer-events: none;
+    box-shadow: 0px 0px calc(10px + 0.2vw) 0px rgba(249, 249, 249, 0.75);
+}
+
+span {
+    white-space: nowrap;
+}
+  
+  /********************************/
+  
+.input-saisis:focus + label,
+.input-saisis:valid + label {
+    bottom: 80%;
+    transform: scale(0.8);
+    color: #ff7f7f;
+}
+  
+.input-saisis:focus ~ .bg-input,
+.input-saisis:valid ~ .bg-input {
+    transform: skewX(20deg) translateX(-50%); 
+    border-inline: 3px solid white;
+}
+
+.input-saisis:focus, .input-saisis:valid {
+    left: 8px;
+}
+
+.bg-input, .input-saisis, label {
+    transition: .4s ease;
+}
+  
+  /***********************************/
+  
+hr {
+    display: block;
+    position: relative;
+    border: none;
+    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+    width: calc(150px + 20vw);
+    height: 2px;
+}
+
+.hr-add {
+    margin-top: 25px;
+}
+  
+  /***********************************/
+  
+input[type="submit"], button {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-family: 'Lora';
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: white;
+    white-space: wrap;
+} 
+  
+.box-3::after, .button-box-appear::after {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    background: #ffffff;
+    transition: transform 0.3s ease-out;
+}
+
+.box-3:hover::after, .button-box-appear:hover::after {
+    transform: scaleX(1);
+}
+
+/******************************************************************/
+
+@media screen and (max-width: 1440px) {
+    
+    form {
+        width: 100%;
+    }
+
+    form .box {
+        width: 40%;
+    }
+
+    .form-transform-in {
+        width: 100%;
+    }
+
+    .form-transform-in .box {
+        width: 40%;
+    }
+
+    hr {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+    
+    form .box {
+        width: 60%;
+    }
+
+    .form-transform-in .box {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    form .box {
+        width: 70%;
+    }
+
+    .form-transform-in .box {
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 503px) {
+
+    .hr-padding {
+        margin-bottom: 15px;
+    }
+
+    .box-trois-responsive {
+        margin-bottom: 15px;
+    }
+
+}
+
+@media screen and (max-width: 455px) {
+    p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 406px) {
+
+    .box-3:hover::after, .button-box-appear:hover::after {
+        transform: scaleX(0);
+    }
+
+}
+
+@media screen and (max-width: 395px) {
+
+    button {
+        width: 80%;
+    } 
+
+}
+
+@media screen and (max-width: 320px) {
+    
+    .bg-input {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 301px) {
+
+    label:not(.sellOption) {
+        position: absolute;
+        left: 12%;
+        bottom: 40%;
+        text-transform: uppercase;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+
+    .bg-input {
+        position: absolute;
+        top: -33%;
+        left: 50%;
+        background-color: rgba(58,80,107, 0.25);
+        width: 90%;
+        height: 55px;
+        transform: skewX(-20deg) translateX(-50%);
+        border-inline: 3px solid transparent;
+        pointer-events: none;
+        box-shadow: 0px 0px calc(10px + 0.2vw) 0px rgba(249, 249, 249, 0.75);
+    }
+
+    .input-saisis {
+        position: relative;
+        width: 80%;
+        outline: none;
+        padding: 8px 2px;
+        font-size: 1.3rem;
+        font-family: 'Playfair_Display';
+        background: none;
+        color: white;
+        border: none;
+        left: 0;
+        z-index: 2;
+    }
+
+    .box-marge-delete {
+        margin: 15px;
+    }
+
+    .box-input-responsive:nth-of-type(1) {
+        margin-top: 50px;
+    }
+
+    .box-input-responsive {
+        margin: 25px;
+    }
+
+    .hr-add {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 270px) {
+
+    .br-responsive {
+        display: none;
+    }
+
+    button {
+        width: 100%;
+    } 
+
+    .box:nth-of-type(2) label {
+        left: 9%;
+    }
+
+}
+
+@media screen and (max-width: 261px) {
+
+    .box:nth-of-type(3) label {
+        left: 9%;
+    }
+
+    .box:nth-of-type(2) label {
+        left: 8%;
+    }
+
+}
+
+@media screen and (max-width: 257px) {
+
+    .box:nth-of-type(2) label {
+        left: 7%;
+    }
+
+}

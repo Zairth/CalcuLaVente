@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link href="./style.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+
+    <title>CalcuLaVente</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.png">
+  </head>
+
+  <body>
+    <form method="get" action="">
+      <div class="box box-marge-delete">
+        <input
+          class="input-saisis"
+          type="number"
+          id="prixAchat"
+          step="0.01"
+          autofocus
+          required
+        />
+        <label class="label-achat">Prix d'Achat</label>
+        <div class="bg-input"></div>
+      </div>
+      <div class="box box-marge-delete">
+        <input
+          class="input-saisis"
+          type="number"
+          id="prixVente"
+          step="0.01"
+          required
+        />
+        <label class="label-vente">Prix de Vente</label>
+        <div class="bg-input"></div>
+      </div>
+      <div class="box box-marge-delete">
+        <input
+          class="input-saisis"
+          type="number"
+          id="coutEnvoie"
+          step="0.01"
+          required
+        />
+        <label class="label-envoie">Coût d'Envoi</label>
+        <div class="bg-input"></div>
+      </div>
+      <div class="box-2">
+        <br />
+        <p>
+          Veuillez indiquer le site sur lequel vous souhaitez
+          <span>vendre :</span>
+        </p>
+        <br />
+        <br class="br-responsive" />
+        <div id="sellOption">
+          <div class="sellOptionBlock sellOptionBlock-ebay">
+            <input
+              type="radio"
+              name="typeOfSell"
+              value="ebaySell"
+              id="ebay"
+              onclick="tapisDeroulanteBay()"
+              required
+            />
+            <label for="ebay" class="sellOption">Vente sur eBay</label><br />
+          </div>
+          <div class="sellOptionBlock sellOptionBlock-fb">
+            <input
+              type="radio"
+              name="typeOfSell"
+              value="facebookSell"
+              id="facebook"
+            />
+            <label for="facebook" class="sellOption"
+              >Vente via PayPal (Entre Proche)</label
+            ><br />
+          </div>
+          <div class="sellOptionBlock sellOptionBlock-cm">
+            <input
+              type="radio"
+              name="typeOfSell"
+              value="cmSell"
+              id="cardmarket"
+              required
+            />
+            <label for="cardmarket" class="sellOption"
+              >Vente sur CardMarket</label
+            ><br />
+          </div>
+        </div>
+      </div>
+      <hr class="hr-disabled" />
+      <div class="box-2-5">
+        <div>
+          <input type="checkbox" id="reductioneBay" />
+          <label for="reductioneBay" class="sellOption"
+            >Réduction de -70% sur les commissions de Vente</label
+          >
+        </div>
+        <div class="boxebaycategoryautomoto">
+          <input
+            type="radio"
+            name="typeOfCategory"
+            value="ebayCategoryOthers"
+            id="ebay-category-others"
+            checked
+          />
+          <label for="ebay-category-others" class="sellOption"
+            >Catégorie Autres (Comprenant Carte à Collectionner)</label
+          ><br />
+        </div>
+        <div class="boxebaycategoryautomoto">
+          <input
+            type="radio"
+            name="typeOfCategory"
+            value="ebayCategoryAuto"
+            id="ebay-category-auto"
+            onclick="tapisDeroulanteBayCategorie()"
+          />
+          <label for="ebay-category-auto" class="sellOption"
+            >Catégorie Auto & Motos</label
+          >
+        </div>
+        <div class="automotocategory automotocategorydisplay">
+          <input
+            type="radio"
+            name="typeOfCategoryAuto"
+            value="ebayCategoryMotos"
+            id="ebay-category-motos"
+            checked
+          />
+          <label for="ebay-category-motos" class="sellOption"
+            >Motos, Scooters ; Scooters des mers, Jet Ski</label
+          >
+        </div>
+        <div class="automotocategory automotocategorydisplay">
+          <input
+            type="radio"
+            name="typeOfCategoryAuto"
+            value="ebayCategoryAutoAuto"
+            id="ebay-category-auto-auto"
+          />
+          <label for="ebay-category-auto-auto" class="sellOption"
+            >Automobiles, Utilitaires, Caravanes ; Bateaux à moteur,
+            Voiliers</label
+          >
+        </div>
+      </div>
+      <hr class="hr-responsive" />
+      <div class="box-3">
+        <input type="submit" value="Calculer le Bénéfice" />
+      </div>
+    </form>
+    <section></section>
+    <div class="button-box">
+      <button onclick="formBack()">Calculer une nouvelle Vente</button>
+    </div>
+  </body>
+</html>
