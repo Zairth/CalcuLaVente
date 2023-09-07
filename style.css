@@ -452,6 +452,10 @@ input[type="submit"], button {
         width: 70%;
     }
 
+    body {
+        overflow-y: scroll;
+    }
+
 }
 
 @media screen and (max-width: 503px) {
