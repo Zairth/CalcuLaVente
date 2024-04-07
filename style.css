@@ -406,6 +406,12 @@ input[type="submit"], button {
 
 /******************************************************************/
 
+@media (hover: none) {
+    .box-3::after, .button-box-appear::after {
+        display: none;
+    }
+}
+
 @media screen and (max-width: 1440px) {
     
     form {
