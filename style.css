@@ -20,7 +20,7 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 100vsh;
     max-height: 100vh;
     width: 100vw;
     background-color: #242833;
