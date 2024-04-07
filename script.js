@@ -224,8 +224,8 @@ function formBack() {
   });
 
   boxInputResponsive.forEach(function (box) {
-    box.classList.remove("box-marge-delete");
-    box.classList.add("box-input-responsive");
+    box.classList.add("box-marge-delete");
+    box.classList.remove("box-input-responsive");
   });
 }
 
