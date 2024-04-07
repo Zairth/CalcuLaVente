@@ -222,6 +222,11 @@ function formBack() {
     automotocategory.classList.remove("auto-and-moto-cat-visible");
     automotocategory.classList.add("automotocategorydisplay");
   });
+
+    boxInputResponsive.forEach(function (box) {
+    box.classList.remove("box-marge-delete");
+    box.classList.add("box-input-responsive");
+  });
 }
 
 form.addEventListener("submit", (event) => {
