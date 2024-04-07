@@ -223,7 +223,7 @@ function formBack() {
     automotocategory.classList.add("automotocategorydisplay");
   });
 
-    boxInputResponsive.forEach(function (box) {
+  boxInputResponsive.forEach(function (box) {
     box.classList.remove("box-marge-delete");
     box.classList.add("box-input-responsive");
   });
