@@ -39,6 +39,35 @@ function tapisDeroulanteBayCategorie() {
   }, 750);
 }
 
+function formBack() {
+  form.reset();
+  section.classList.add("section-disabled");
+  form.classList.remove("form-transform-out");
+  form.classList.add("form-transform-in");
+  ebayCheckBoxAppear.classList.remove("box-checkbox-appear");
+  sellOptionBox.classList.remove("box-deux-remove");
+  hrPop.classList.remove("hr-add");
+  hrReponsive.classList.remove("hr-padding");
+  submitResponsive.classList.remove("box-trois-responsive");
+  buttonNewSell.classList.add("button-box-disappear");
+  buttonNewSell.classList.remove("button-box-appear");
+
+  boxCategoryeBay.forEach(function (boxebaycategoryautomoto) {
+    boxebaycategoryautomoto.classList.remove("box-ebay-category-remove");
+  });
+
+  boxOptionAutoMotos.forEach(function (automotocategory) {
+    automotocategory.classList.remove("auto-and-moto-cat-visible");
+    automotocategory.classList.add("automotocategorydisplay");
+  });
+  
+  boxInputResponsive.forEach(function (box) {
+    box.classList.add("box-marge-delete");
+    box.classList.remove("box-input-responsive");
+  });
+
+}
+
 const form = document.querySelector("form");
 const section = document.querySelector("section");
 const prixAchat = document.getElementById("prixAchat");
@@ -199,29 +228,6 @@ function formule() {
   }
 
   section.innerHTML = div;
-}
-
-function formBack() {
-  form.reset();
-  section.classList.add("section-disabled");
-  form.classList.remove("form-transform-out");
-  form.classList.add("form-transform-in");
-  ebayCheckBoxAppear.classList.remove("box-checkbox-appear");
-  sellOptionBox.classList.remove("box-deux-remove");
-  hrPop.classList.remove("hr-add");
-  hrReponsive.classList.remove("hr-padding");
-  submitResponsive.classList.remove("box-trois-responsive");
-  buttonNewSell.classList.add("button-box-disappear");
-  buttonNewSell.classList.remove("button-box-appear");
-
-  boxCategoryeBay.forEach(function (boxebaycategoryautomoto) {
-    boxebaycategoryautomoto.classList.remove("box-ebay-category-remove");
-  });
-
-  boxOptionAutoMotos.forEach(function (automotocategory) {
-    automotocategory.classList.remove("auto-and-moto-cat-visible");
-    automotocategory.classList.add("automotocategorydisplay");
-  });
 }
 
 form.addEventListener("submit", (event) => {
