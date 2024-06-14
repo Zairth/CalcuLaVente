@@ -20,8 +20,8 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
+    min-height: 780px;
     height: 100svh;
-    max-height: 100svh;
     width: 100vw;
     background-color: #242833;
     background-image: url("./assets/images/bg-img.png");

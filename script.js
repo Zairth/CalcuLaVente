@@ -230,8 +230,6 @@ function formule() {
   section.innerHTML = div;
 }
 
-<<<<<<< HEAD
-=======
 function formBack() {
   form.reset();
   section.classList.add("section-disabled");
@@ -260,7 +258,6 @@ function formBack() {
   });
 }
 
->>>>>>> 828b3314589767f23735e32712a47a99ad30a23e
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   formule();
