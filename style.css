@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Playfair_Display';
-    src: url('/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-    src: url('/assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    src: url('./assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('./assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Lora';
-    src: url('/assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf') format('truetype');
-    src: url('/assets/fonts/Lora/Lora-VariableFont_wght.ttf') format('truetype');
+    src: url('./assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('./assets/fonts/Lora/Lora-VariableFont_wght.ttf') format('truetype');
 } 
 
 *, *::before, *::after {
@@ -20,11 +20,11 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    height: 100vh;
-    max-height: 100vh;
+    height: 100svh;
+    max-height: 100svh;
     width: 100vw;
     background-color: #242833;
-    background-image: url("/assets/images/bg-img.png");
+    background-image: url("./assets/images/bg-img.png");
     background-position: center;
     background-size: cover;
     flex-wrap: wrap;
@@ -330,7 +330,7 @@ label:not(.sellOption) {
     transform: skewX(-20deg) translateX(-50%);
     border-inline: 3px solid transparent;
     pointer-events: none;
-    box-shadow: 0px 0px calc(10px + 0.2vw) 0px rgba(249, 249, 249, 0.75);
+    box-shadow: 0px 0px calc(10px + 0.2vw) 0px rgba(249, 249, 249, 0.74);
 }
 
 span {
@@ -405,6 +405,12 @@ input[type="submit"], button {
 }
 
 /******************************************************************/
+
+@media (hover: none) {
+    .box-3::after, .button-box-appear::after {
+        display: none;
+    }
+}
 
 @media screen and (max-width: 1440px) {
     
