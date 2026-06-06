@@ -128,9 +128,9 @@ function formule() {
         }
       }
 
+      // Frais d'insertion + commission fixes : déjà TTC, pas de TVA à rajouter
       taxeBayAfterPromotion = taxeBay - promotion;
-      taxeTva = (taxeBayAfterPromotion * 20) / 100;
-      totalTaxe = taxeTva + taxeBayAfterPromotion;
+      totalTaxe = taxeBayAfterPromotion;
       totalCount =
         totalTaxe + parseFloat(prixEnvoi.value) + parseFloat(prixAchat.value);
       ValeurMoinTaxe = parseFloat(prixVente.value) - totalTaxe;
@@ -149,27 +149,31 @@ function formule() {
       </div>`;
     } else {
       structure = "Autres (Carte) -";
-      if (prixVente.value < 2000) {
+      // Base de commission = montant total de la vente, frais d'expédition inclus
+      const montantTotal =
+        parseFloat(prixVente.value) + parseFloat(prixEnvoi.value);
+      let commissionBase = 0;
+      if (montantTotal < 2000) {
         structure += " Inférieur à 2000";
-        taxeBay = (parseFloat(prixVente.value) * 8.33) / 100;
-        if (reductioneBay.checked) {
-          structure += " & réduction cochée";
-          promotion = (taxeBay * 70) / 100;
-        } else {
-          structure += " & réduction non cochée";
-        }
+        // 10% TVA incluse -> 8,3333% HT
+        commissionBase = (montantTotal * 8.3333) / 100;
       } else {
         structure += " Supérieur à 2000";
-        taxeBay =
-          ((parseFloat(prixVente.value) - 2000) * 2) / 100 +
-          (2000 * 8.33) / 100;
-        if (reductioneBay.checked) {
-          structure += " & réduction cochée";
-          promotion = (taxeBay * 70) / 100;
-        } else {
-          structure += " & réduction non cochée";
-        }
+        // 10% (TVA incl. -> 8,3333% HT) jusqu'à 2000, puis 2% (TVA incl. -> 1,6667% HT)
+        commissionBase =
+          (2000 * 8.3333) / 100 + ((montantTotal - 2000) * 1.6667) / 100;
       }
+      // Frais d'exploitation réglementaires : 0,42% TVA incluse -> 0,35% HT
+      const fraisReglementaireBase = (montantTotal * 0.35) / 100;
+      taxeBay = commissionBase + fraisReglementaireBase;
+      if (reductioneBay.checked) {
+        structure += " & réduction cochée";
+        // La réduction promotionnelle s'applique à la commission sur le prix final
+        promotion = (commissionBase * 70) / 100;
+      } else {
+        structure += " & réduction non cochée";
+      }
+      // + 0,29€ HT = 0,35€ TTC de frais fixes par commande
       taxeBayAfterPromotion = taxeBay - promotion + 0.29;
       taxeTva = (taxeBayAfterPromotion * 20) / 100;
       totalTaxe = taxeBayAfterPromotion + taxeTva;
@@ -258,7 +262,11 @@ function formBack() {
   });
 }
 
+const coinSound = new Audio("./assets/sounds/cha-ching.mp4");
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  coinSound.currentTime = 0;
+  coinSound.play().catch(() => {});
   formule();
 });
